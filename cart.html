@@ -232,7 +232,7 @@
                                 <tr class="cart__row border-bottom line1 cart-flex border-top">
                                     
                                     <td class="cart__meta small--text-left cart-flex-item">
-                                        <div class="list-view-item__title">
+                                        <div id="cart-items" class="list-view-item__title">
                                             <a href="#">Your Cart is empty</a>
                                         </div>
                                     </td>
@@ -654,6 +654,36 @@
      <script src="assets/js/lazysizes.js"></script>
      <script src="assets/js/main.js"></script>
 </div>
+
+<script>
+  function getCart() {
+    return JSON.parse(localStorage.getItem('cart')) || {};
+  }
+
+  function renderCartItems() {
+    const cart = getCart();
+    const container = document.getElementById('cart-items');
+    container.innerHTML = '';
+
+    if (Object.keys(cart).length === 0) {
+      container.innerHTML = '<p>Your cart is empty.</p>';
+      return;
+    }
+
+    for (const [productId, quantity] of Object.entries(cart)) {
+      container.innerHTML += `
+        <div class="cart-item">
+          <p><strong>Product:</strong> ${productId}</p>
+          <p><strong>Quantity:</strong> ${quantity}</p>
+        </div>
+        <hr>
+      `;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', renderCartItems);
+</script>
+
 </body>
 
 <!-- belle/cart.html   11 Nov 2019 12:47:01 GMT -->

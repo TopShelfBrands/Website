@@ -284,7 +284,7 @@
         
                                                 <!-- Start product button -->
                                                 <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                                    <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
+                                                    <button class="btn btn-addto-cart" type="button" tabindex="0" onclick="addToCart('pufferjacket')">Add To Cart test</button>
                                                 </form>
                                                 <div class="button-set">
                                                     <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
@@ -2010,6 +2010,36 @@
 			jQuery('#modalOverly').hide();
 		  }
 		});
+
+        // newsletter pop up end here
+
+        // add to cart starts here
+
+
+
+function addToCart(productId, quantity = 1) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+  cart[productId] = (cart[productId] || 0) + quantity;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartDisplay();
+}
+
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart')) || {};
+}
+
+function updateCartDisplay() {
+  const cart = getCart();
+  const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
+  const cartCountElement = document.getElementById('CartCount');
+  if (cartCountElement) {
+    cartCountElement.textContent = cartCount;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', updateCartDisplay);
+
+
 	</script>
     <!--End For Newsletter Popup-->
 </div>
