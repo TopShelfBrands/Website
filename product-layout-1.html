@@ -1648,12 +1648,15 @@ function getCart() {
 
 function updateCartDisplay() {
   const cart = getCart();
-  const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
+  const cartCount = Object.values(cart).reduce((total, item) => {
+    return total +(item && typeof item == 'object' ? item.quantity : 0);
+}, 0);
   const cartCountElement = document.getElementById('CartCount');
   if (cartCountElement) {
     cartCountElement.textContent = cartCount;
   }
 }
+
 
 document.addEventListener('DOMContentLoaded', updateCartDisplay);
 </script>
