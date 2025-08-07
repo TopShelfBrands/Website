@@ -682,6 +682,26 @@
   }
 
   document.addEventListener('DOMContentLoaded', renderCartItems);
+
+
+  // cart count goes up
+
+  
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart')) || {};
+}
+
+function updateCartDisplay() {
+  const cart = getCart();
+  const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
+  const cartCountElement = document.getElementById('CartCount');
+  if (cartCountElement) {
+    cartCountElement.textContent = cartCount;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', updateCartDisplay);
+
 </script>
 
 </body>
