@@ -672,11 +672,38 @@
 
     for (const [productId, quantity] of Object.entries(cart)) {
       container.innerHTML += `
-        <div class="cart-item">
-          <p><strong>Product:</strong> ${productId}</p>
-          <p><strong>Quantity:</strong> ${quantity}</p>
-        </div>
-        <hr>
+        
+
+
+        <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                    <td class="cart-item" class="cart__image-wrapper cart-flex-item">
+                                        <a href="#"><img class="cart__image" src="assets/images/product-images/product-image1.jpg" alt="${productId}"></a>
+                                    </td>
+                                    <td class="cart__meta small--text-left cart-flex-item">
+                                        <div class="list-view-item__title">
+                                            <a href="#">Elastic Waist Dress </a>
+                                        </div>
+                                        
+                                        <div class="cart__meta-text">
+                                            Color: Navy<br>Size: Small<br>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price-wrapper cart-flex-item">
+                                        <span class="money">$735.00</span>
+                                    </td>
+                                    <td class="cart__update-wrapper cart-flex-item text-right">
+                                        <div class="cart__qty text-center">
+                                            <p>${quantity}</p>
+                                        </div>
+                                    </td>
+                                    <td class="text-right small--hide cart-price">
+                                        <div><span class="money">$735.00</span></div>
+                                    </td>
+                                    <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
+                                </tr>
+
+
+
       `;
     }
   }
@@ -685,8 +712,6 @@
 
 
   // cart count goes up
-
-  
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || {};
 }
