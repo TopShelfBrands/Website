@@ -665,9 +665,19 @@
         if (cart[productId] && typeof cart[productId] === 'object') {
         cart[productId].quantity = newQuantity;
         localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartDisplay();
-        renderCartSubtotal(); //realtime total updates
+        updateCartDisplay();  //update cart icon
+        renderCartSubtotal(); //realtime update of total
+
+        const row = document.querySelector(`.qtyField[data-product-id="${productId}"]`)?.closest('tr');
+        if (row) {
+        const lineTotalElement = row.querySelector('.cart-price .money');
+        const newLineTotal = (cart[productId].quantity * cart[productId].price).toFixed(2);
+        if (lineTotalElement) {
+            lineTotalElement.textContent = `£${newLineTotal}`;
         }
+
+        }
+    }
     }
 
 
@@ -763,7 +773,11 @@
 
   function updateCartDisplay() {
     const cart = getCart();
-    const cartCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
+      const cartCount = Object.values(cart).reduce((total, item) => {
+        return total + (item && typeof item === 'object' ? item.quantity : 0);
+    }, 0);
+
+
     const cartCountElement = document.getElementById('CartCount');
     if (cartCountElement) {
       cartCountElement.textContent = cartCount;
@@ -772,7 +786,13 @@
 
   function renderCartSubtotal() {
   const cart = getCart();
-  const subtotal = Object.values(cart).reduce((sum, item) => sum + item.quantity * item.price, 0);
+  let subtotal = 0;
+    for (const item of Object.values(cart)) {
+    if (item && typeof item === 'object') {
+      subtotal += item.price * item.quantity;
+    }
+  }
+
   const subtotalElement = document.getElementById('cart-subtotal');
   if (subtotalElement) {
     subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
