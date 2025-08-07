@@ -705,10 +705,10 @@
     }
 
     for (const [productId, item] of Object.entries(cart)) {
-        if(!item || typeof item !== 'object') continue;
+        if(item && typeof item === 'object' && typeof item.price === 'number' && typeof item.quantity === 'number') continue;
         const quantity = item.quantity;
         const price = item.price;
-        const total = (price * quantity).toFixed(2);
+        const total = item.price * item.quantity;
       container.innerHTML += `
         <tr class="cart__row border-bottom line1 cart-flex border-top">
           <td class="cart__image-wrapper cart-flex-item cart-item">
@@ -735,7 +735,7 @@
             </div>
           </td>
           <td class="text-right small--hide cart-price">
-            <div><span class="money">£${total}</span></div>
+            <div><span class="money">£${total.toFixed(2)}</span></div>
           </td>
           <td class="text-center small--hide">
             <a href="#" class="btn btn--secondary cart__remove" title="Remove item">
