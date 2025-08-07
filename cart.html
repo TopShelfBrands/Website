@@ -695,7 +695,7 @@
                                         <div class="cart__qty text-center">
                                             <div class="qtyField">
                                                 <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
-                                                <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="${quantity}" pattern="[0-9]*">
+                                                <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="${parseInt(quantity, 10)}" pattern="[0-9]*">
                                                 <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
                                             </div>
                                         </div>
