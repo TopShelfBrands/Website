@@ -660,6 +660,36 @@
     return JSON.parse(localStorage.getItem('cart')) || {};
   }
 
+  function updateCart(productId, newQuantity) {
+    const cart = getCart();
+    cart[productId] = newQuantity;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+  }
+
+  function attachQuantityListeners() {
+    document.querySelectorAll('.qtyField').forEach(field => {
+      const minusBtn = field.querySelector('.minus');
+      const plusBtn = field.querySelector('.plus');
+      const input = field.querySelector('.qty');
+      const productId = field.getAttribute('data-product-id');
+
+      minusBtn.addEventListener('click', () => {
+        let current = parseInt(input.value, 10);
+        if (current > 1) {
+          input.value = current - 1;
+          updateCart(productId, current - 1);
+        }
+      });
+
+      plusBtn.addEventListener('click', () => {
+        let current = parseInt(input.value, 10);
+        input.value = current + 1;
+        updateCart(productId, current + 1);
+      });
+    });
+  }
+
   function renderCartItems() {
     const cart = getCart();
     const container = document.getElementById('cart-items');
@@ -672,66 +702,62 @@
 
     for (const [productId, quantity] of Object.entries(cart)) {
       container.innerHTML += `
-        
-
-
         <tr class="cart__row border-bottom line1 cart-flex border-top">
-                                    <td class="cart__image-wrapper cart-flex-item cart-item">
-                                        <a href="#"><img class="cart__image" src="assets/images/product-images/product-image1.jpg" alt=""></a>
-                                    </td>
-                                    <td class="cart__meta small--text-left cart-flex-item">
-                                        <div class="list-view-item__title">
-                                            <a href="#">${productId} </a>
-                                        </div>
-                                        
-                                        <div class="cart__meta-text">
-                                            Color: Navy<br>Size: Small<br>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price-wrapper cart-flex-item">
-                                        <span class="money">$735.00</span>
-                                    </td>
-                                    <td class="cart__update-wrapper cart-flex-item text-right">
-                                        <div class="cart__qty text-center">
-                                            <div class="qtyField">
-                                                <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
-                                                <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="${parseInt(quantity, 10)}" pattern="[0-9]*">
-                                                <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right small--hide cart-price">
-                                        <div><span class="money">$735.00</span></div>
-                                    </td>
-                                    <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
-                                </tr>
-
-
-
+          <td class="cart__image-wrapper cart-flex-item cart-item">
+            <a href="#"><img class="cart__image" src="assets/images/product-images/product-image1.jpg" alt=""></a>
+          </td>
+          <td class="cart__meta small--text-left cart-flex-item">
+            <div class="list-view-item__title">
+              <a href="#">${productId}</a>
+            </div>
+            <div class="cart__meta-text">
+              Color: Navy<br>Size: Small<br>
+            </div>
+          </td>
+          <td class="cart__price-wrapper cart-flex-item">
+            <span class="money">$735.00</span>
+          </td>
+          <td class="cart__update-wrapper cart-flex-item text-right">
+            <div class="cart__qty text-center">
+              <div class="qtyField" data-product-id="${productId}">
+                <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
+                <input class="cart__qty-input qty" type="text" name="updates[]" value="${parseInt(quantity, 10)}" pattern="[0-9]*">
+                <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
+              </div>
+            </div>
+          </td>
+          <td class="text-right small--hide cart-price">
+            <div><span class="money">$735.00</span></div>
+          </td>
+          <td class="text-center small--hide">
+            <a href="#" class="btn btn--secondary cart__remove" title="Remove item">
+              <i class="icon icon anm anm-times-l"></i>
+            </a>
+          </td>
+        </tr>
       `;
+    }
+
+    attachQuantityListeners(); // ✅ Attach listeners after rendering
+  }
+
+  function updateCartDisplay() {
+    const cart = getCart();
+    const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
+    const cartCountElement = document.getElementById('CartCount');
+    if (cartCountElement) {
+      cartCountElement.textContent = cartCount;
     }
   }
 
-  document.addEventListener('DOMContentLoaded', renderCartItems);
-
-
-  // cart count goes up
-function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || {};
-}
-
-function updateCartDisplay() {
-  const cart = getCart();
-  const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
-  const cartCountElement = document.getElementById('CartCount');
-  if (cartCountElement) {
-    cartCountElement.textContent = cartCount;
-  }
-}
-
-document.addEventListener('DOMContentLoaded', updateCartDisplay);
-
+  // ✅ Single DOMContentLoaded listener
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCartItems();
+    updateCartDisplay();
+  });
 </script>
+
+
 
 </body>
 
