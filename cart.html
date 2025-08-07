@@ -226,13 +226,13 @@
                                     <th class="action">&nbsp;</th>
                                 </tr>
                             </thead>
-                    		<tbody class="cart-inner">
+                    		<tbody id="cart-items">
                             
                                 
                                 <tr class="cart__row border-bottom line1 cart-flex border-top">
                                     
                                     <td class="cart__meta small--text-left cart-flex-item">
-                                        <div id="cart-items" class="list-view-item__title">
+                                        <div id="" class="list-view-item__title">
                                             <a href="#">Your Cart is empty</a>
                                         </div>
                                     </td>
@@ -670,7 +670,7 @@
       return;
     }
 
-    for (const [productId, quantity] of Object.entries(cart-inner)) {
+    for (const [productId, quantity] of Object.entries(cart)) {
       container.innerHTML += `
         
 
