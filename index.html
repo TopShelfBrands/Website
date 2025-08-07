@@ -284,7 +284,7 @@
         
                                                 <!-- Start product button -->
                                                 <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                                    <button class="btn btn-addto-cart" type="button" tabindex="0" onclick="event.preventDefault; addToCart('pufferjacket')">Add To Cart test</button>
+                                                    <button class="btn btn-addto-cart" type="button" tabindex="0" onclick="event.preventDefault; addToCart('GlacierCore™ ThermalShield Puffer Jacket', 56.99)">Add To Cart test</button>
                                                 </form>
                                                 <div class="button-set">
                                                     <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
@@ -308,13 +308,13 @@
                                             <div class="product-details text-center">
                                                 <!-- product name -->
                                                 <div class="product-name">
-                                                    <a href="short-description.html">Puffer Jacket</a>
+                                                    <a href="short-description.html">GlacierCore™ ThermalShield Puffer Jacket</a>
                                                 </div>
                                                 <!-- End product name -->
                                                 <!-- product price -->
                                                 <div class="product-price">
-                                                    <span class="old-price">£56.99</span>
-                                                    <span class="price">£80.00</span>
+                                                    <span class="old-price">£80.00</span>
+                                                    <span class="price">£56.99</span>
                                                 </div>
                                                 <!-- End product price -->
                                                 
@@ -1678,7 +1678,7 @@
                         	<li class="display-table-cell">
                             	<i class="icon anm anm-truck-l"></i>
                             	<h5>Free Shipping &amp; Return</h5>
-                            	<span class="sub-text">Free shipping on all US orders</span>
+                            	<span class="sub-text">Free shipping on all UK orders</span>
                             </li>
                           	<li class="display-table-cell">
                             	<i class="icon anm anm-pound-sign-r"></i>
@@ -2015,14 +2015,22 @@
 
         // add to cart starts here
 
-
-
-function addToCart(productId, quantity = 1) {
+function addToCart(productId, price, quantity = 1) {
   let cart = JSON.parse(localStorage.getItem('cart')) || {};
-  cart[productId] = (cart[productId] || 0) + quantity;
+   if (cart[productId]) {
+    cart[productId].quantity += quantity;
+  } else {
+    cart[productId] = {
+      quantity: quantity,
+      price: price
+    };
+  }
+
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartDisplay();
 }
+
+
 
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || {};

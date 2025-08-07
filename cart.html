@@ -151,7 +151,7 @@
                             <p style="margin-top: 30px; margin-left: 10px;"> Your cart is empty.</p>
                             <div class="total">
                                 <div class="total-in">
-                                    <span class="label">Cart Subtotal:</span><span class="product-price"><span class="money">£0.00</span></span>
+                                    <span class="label cart__subtotal">Cart Subtotal:</span><span class="product-price"><span id="cart-subtotal" class="money">£0.00</span></span>
                                 </div>
                                  <div class="buttonSet text-center">
                                     <a href="cart.html" class="btn btn-secondary btn--small">View Cart</a>
@@ -700,7 +700,10 @@
       return;
     }
 
-    for (const [productId, quantity] of Object.entries(cart)) {
+    for (const [productId, item] of Object.entries(cart)) {
+        const quantity = item.quantity;
+        const price = item.price;
+        const total = (price * quantity).toFixed(2);
       container.innerHTML += `
         <tr class="cart__row border-bottom line1 cart-flex border-top">
           <td class="cart__image-wrapper cart-flex-item cart-item">
@@ -715,19 +718,19 @@
             </div>
           </td>
           <td class="cart__price-wrapper cart-flex-item">
-            <span class="money">$735.00</span>
+            <span class="money">£${price.toFixed(2)}</span>
           </td>
           <td class="cart__update-wrapper cart-flex-item text-right">
             <div class="cart__qty text-center">
               <div class="qtyField" data-product-id="${productId}">
                 <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
-                <input class="cart__qty-input qty" type="text" name="updates[]" value="${parseInt(quantity, 10)}" pattern="[0-9]*">
+                <input class="cart__qty-input qty" type="text" name="updates[]" value="${quantity}" pattern="[0-9]*">
                 <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
               </div>
             </div>
           </td>
           <td class="text-right small--hide cart-price">
-            <div><span class="money">$735.00</span></div>
+            <div><span class="money">£${total}</span></div>
           </td>
           <td class="text-center small--hide">
             <a href="#" class="btn btn--secondary cart__remove" title="Remove item">
@@ -743,18 +746,32 @@
 
   function updateCartDisplay() {
     const cart = getCart();
-    const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
+    const cartCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
     const cartCountElement = document.getElementById('CartCount');
     if (cartCountElement) {
       cartCountElement.textContent = cartCount;
     }
   }
 
+  function renderCartSubtotal() {
+  const cart = getCart();
+  const subtotal = Object.values(cart).reduce((sum, item) => sum + item.quantity * item.price, 0);
+  const subtotalElement = document.getElementById('cart-subtotal');
+  if (subtotalElement) {
+    subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+  }
+}
+
   // ✅ Single DOMContentLoaded listener
   document.addEventListener('DOMContentLoaded', () => {
     renderCartItems();
     updateCartDisplay();
+    renderCartSubtotal();
   });
+
+
+
+
 </script>
 
 
