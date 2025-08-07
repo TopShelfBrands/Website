@@ -2016,7 +2016,7 @@
         // add to cart starts here
 
 function addToCart(productId, price, quantity = 1) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+  let cart = getCart();
    if (cart[productId]) {
     cart[productId].quantity += quantity;
   } else {
