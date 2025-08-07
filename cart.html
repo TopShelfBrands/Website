@@ -745,6 +745,16 @@
       `;
     }
 
+    for (const [productId, item] of Object.entries(cart)) {
+        if (!item || typeof item !== 'object') continue; // skip malformed entries
+
+            const quantity = item.quantity;
+            const price = item.price;
+            const total = (price * quantity).toFixed(2);
+
+    // ... render HTML
+    }
+
     attachQuantityListeners(); // ✅ Attach listeners after rendering
   }
 
