@@ -666,6 +666,7 @@
         cart[productId].quantity = newQuantity;
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCartDisplay();
+        renderCartSubtotal(); //realtime total updates
         }
     }
 
@@ -745,7 +746,7 @@
         </tr>
       `;
     }
-    
+
 
     for (const [productId, item] of Object.entries(cart)) {
         if (!item || typeof item !== 'object') continue; // skip malformed entries
