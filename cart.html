@@ -693,7 +693,11 @@
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
-                                            <p>${quantity}</p>
+                                            <div class="qtyField">
+                                                <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
+                                                <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="${quantity}" pattern="[0-9]*">
+                                                <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
+                                            </div>
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
