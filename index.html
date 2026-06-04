@@ -31,34 +31,48 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
 
+    /* ── main alignment ── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
     /* ── Topbar ── */
     .topbar {
-      background: var(--navy);
-      color: #8fa8c4;
+      background: #081425;
+      color: #d7e3f0;
       font-size: 12px;
-      padding: 8px 40px;
+      padding: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
     }
+    .topbar-inner {
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-between;
+    }
     .topbar-right { display: flex; gap: 20px; align-items: center; }
-    .topbar-right a { color: #8fa8c4; transition: color .2s; }
+    .topbar-right a { color: #d7e3f0; font-weight: 500; transition: color .2s; }
     .topbar-right a:hover { color: var(--gold); }
 
     /* ── Navbar ── */
     .navbar {
       background: var(--cream);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+    }
+    .navbar-inner {
+      height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
     .logo { display: flex; align-items: center; gap: 10px; }
     .logo-icon {
@@ -119,15 +133,17 @@
       position: absolute; inset: 0;
       background: linear-gradient(105deg, rgba(10,16,30,0.95) 0%, rgba(10,16,30,0.82) 45%, rgba(10,16,30,0.3) 100%);
     }
-    .hero-inner {
-      position: relative; z-index: 2;
-      width: 100%;
-      padding: 80px 40px;
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
-    .hero-text { flex: 1; max-width: 560px; }
+  .hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+    .hero-text { max-width: 520px; }
     .hero-eyebrow {
       display: flex; align-items: center; gap: 10px;
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
@@ -136,7 +152,7 @@
     .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
     .hero-text h1 {
       font-family: var(--font-display);
-      font-size: clamp(36px, 5vw, 58px);
+      font-size: clamp(48px, 6vw, 72px);
       font-weight: 500;
       color: var(--white);
       line-height: 1.1;
@@ -171,34 +187,55 @@
     .btn-ghost:hover { border-color: rgba(255,255,255,0.7); }
     .hero-stats {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      min-width: 220px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 3px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
+      grid-template-columns: repeat(4, 1fr);
+      width: 100%;
+      margin-top: 70px;
+      background:rgba(5, 12, 28, 0.92);
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.45),
+    0 0 60px rgba(13,27,46,0.35);
+  overflow: hidden;
+}
     .stat-cell {
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(4px);
-      padding: 20px 16px;
-      text-align: center;
+      padding: 34px 22px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+
+      background: linear-gradient(
+        180deg,
+        rgba(15,25,45,0.96),
+        rgba(8,15,30,0.96)
+      );
     }
+    .stat-cell:last-child {
+  border-right: none;
+}
     .stat-cell .n {
       font-family: var(--font-display);
-      font-size: 28px;
+      font-size: 42px;
       font-weight: 500;
       color: var(--gold);
       line-height: 1;
     }
-    .stat-cell .l { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #8fa8c4; margin-top: 4px; }
+    .stat-cell .l { 
+      font-size: 11px; 
+      letter-spacing: 2px; 
+      text-transform: uppercase; 
+      color: #9bb1c8; 
+      margin-top: 4px; 
+    }
 
     /* ── Trust bar ── */
     .trust-bar {
       background: var(--cream-dark);
       border-bottom: 1px solid var(--border);
-      padding: 14px 40px;
+      padding: 0;
+    }
+
+    .trust-inner {
+      padding: 14px 0;
       display: flex;
       gap: 32px;
       justify-content: center;
@@ -214,7 +251,7 @@
     .brands-bar {
       background: var(--cream);
       border-bottom: 1px solid var(--border);
-      padding: 28px 40px;
+      padding: 28px 0;
       text-align: center;
     }
     .brands-label {
@@ -238,7 +275,7 @@
     .brand-name:hover { color: var(--navy); }
 
     /* ── Section basics ── */
-    section { padding: 80px 40px; }
+    section { padding: 80px 0px; }
     .section-tag {
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
       color: var(--gold); margin-bottom: 10px;
@@ -258,28 +295,88 @@
     .catalogue-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
     .link-arrow { font-size: 13px; color: var(--navy); display: flex; align-items: center; gap: 6px; transition: gap .2s; }
     .link-arrow:hover { gap: 10px; }
-    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(13,27,46,0.08); border: 1px solid rgba(13,27,46,0.08); border-radius: 3px; overflow: hidden; }
     .cat-card {
-      background: var(--white);
-      padding: 28px 24px;
-      display: flex; flex-direction: column;
-      transition: background .2s;
-      cursor: pointer;
-    }
-    .cat-card:hover { background: #fdf9f3; }
+  background: #fff;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.cat-card:hover {
+  background: #fff;
+  border-color: var(--gold);
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,.35),
+    0 12px 30px rgba(13,27,46,.08);
+  transform: translateY(-3px);
+  z-index: 2;
+}
     .cat-icon {
-      width: 36px; height: 36px;
-      background: var(--cream-dark);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 18px;
+  width: 36px;
+  height: 36px;
+  background: var(--cream-dark);
+  border-radius: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  transition: all .25s ease;
+}
+.cat-card:hover .cat-icon {
+  background: var(--gold);
+  transform: scale(1.05);
+}
+
+.cat-card:hover .cat-icon svg {
+  stroke: var(--navy);
+}
+
+.cat-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--navy);
+  fill: none;
+  stroke-width: 1.5;
+
+  transition: stroke 0.3s ease;
+}
+.cat-card h3 {
+  transition: all 0.3s ease;
+}
+
+.cat-card:hover h3 {
+  color: var(--gold);
+  font-weight: 600;
+}
     }
     .cat-icon svg { width: 18px; height: 18px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
-    .cat-card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+    .cat-card h3 { font-family: var(--font-display); font-size: 25px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
     .cat-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
     .cat-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 14px; margin-top: auto; }
     .cat-skus { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
-    .cat-arrow { color: var(--navy); font-size: 16px; }
+    .cat-arrow {
+  color: var(--navy);
+  font-size: 16px;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.cat-card:hover .cat-arrow {
+  color: var(--gold);
+  transform: translateX(4px);
+}
 
     /* ── How it works ── */
     #how { background: var(--navy); }
@@ -401,7 +498,7 @@
       .hero-stats { grid-template-columns: repeat(4,1fr); min-width: 0; width: 100%; }
       .stat-cell { padding: 14px 8px; }
       .stat-cell .n { font-size: 20px; }
-      section { padding: 48px 20px; }
+      .section { padding: 48px 20px; }
       .trust-bar { padding: 12px 16px; gap: 14px; }
       .brands-bar { padding: 24px 16px; }
       .brand-name { font-size: 13px; padding: 4px 12px; }
@@ -414,26 +511,57 @@
       .footer-bottom { flex-direction: column; text-align: center; }
       .cta-band { padding: 48px 20px; }
       .catalogue-header { flex-direction: column; align-items: flex-start; }
+      .container {padding: 0 20px;}
     }
     @media (max-width: 480px) {
       .steps-grid { grid-template-columns: 1fr; }
       .hero-stats { grid-template-columns: repeat(2,1fr); }
     }
+
+    #global-network {
+  position: relative;
+  padding: 140px 0;
+  background:
+    linear-gradient(
+      rgba(245,240,232,.88),
+      rgba(245,240,232,.88)
+    ),
+    url("assets/globe-hero.png");
+
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+#global-network .section-title {
+  color: var(--navy);
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+#global-network .section-sub {
+  color: var(text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+}
   </style>
 </head>
 <body>
 
   <!-- Topbar -->
   <div class="topbar">
+    <div class="container topbar-inner">
     <span>UK wholesale distributor — sourcing from 20+ countries worldwide</span>
     <div class="topbar-right">
       <a href="#">Trade login</a>
       <a href="tel:+441216000000">+44 121 600 0000</a>
     </div>
   </div>
+  </div>
 
   <!-- Navbar -->
   <nav class="navbar">
+    <div class="container navbar-inner">
     <a href="#" class="logo">
       <div class="logo-icon">T</div>
       <div class="logo-text">
@@ -452,6 +580,7 @@
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
+  </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#catalogue">Catalogue</a>
@@ -466,6 +595,7 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
+    <div class="container">
     <div class="hero-inner">
       <div class="hero-text">
         <div class="hero-eyebrow">Est. UK Wholesale &amp; Distribution</div>
@@ -483,10 +613,12 @@
         <div class="stat-cell"><div class="n">20+</div><div class="l">Source countries</div></div>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- Trust bar -->
   <div class="trust-bar">
+    <div class="container trust-inner">
     <div class="trust-item">
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Trade accounts only
@@ -508,9 +640,11 @@
       Authorised distributor
     </div>
   </div>
+  </div>
 
   <!-- Brands -->
   <div class="brands-bar" id="brands">
+    <div class="container">
     <div class="brands-label">Trusted distribution partner for leading brands</div>
     <div class="brands-list">
       <span class="brand-name">Arden &amp; Co</span>
@@ -523,9 +657,11 @@
       <span class="brand-name">St. James</span>
     </div>
   </div>
+  </div>
 
   <!-- Catalogue -->
   <section id="catalogue">
+    <div class="container">
     <div class="catalogue-header">
       <div>
         <div class="section-tag">Categories</div>
@@ -572,10 +708,12 @@
         <div class="cat-footer"><span class="cat-skus">780+ SKUs</span><span class="cat-arrow">→</span></div>
       </a>
     </div>
+    </div>
   </section>
 
   <!-- How it works -->
   <section id="how">
+    <div class="container">
     <div class="section-tag">Onboarding</div>
     <div class="section-title">How it works</div>
     <div class="section-sub">Getting set up as a trade buyer takes under 48 hours.</div>
@@ -601,10 +739,34 @@
         <p>Order online or via your account manager. We handle pick, pack and UK dispatch.</p>
       </div>
     </div>
+  </div>
   </section>
+
+  <section id="global-network">
+  <div class="container">
+
+    <div class="section-tag">
+      Global sourcing
+    </div>
+
+    <div class="section-title">
+      Connected to suppliers across Europe,
+      Asia and beyond.
+    </div>
+
+    <div class="section-sub">
+      Through long-standing relationships with manufacturers,
+      distributors and brand owners worldwide, we help trade
+      buyers access a broader range of products through one
+      trusted UK partner.
+    </div>
+
+  </div>
+</section>
 
   <!-- Why TopShelf -->
   <section id="why">
+    <div class="container">
     <div class="why-grid">
       <div class="why-img-wrap">
         <img src="assets/product-flatlay.jpg" alt="Premium branded products" />
@@ -627,6 +789,7 @@
         </ul>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- CTA -->
@@ -642,6 +805,7 @@
 
   <!-- Footer -->
   <footer id="contact">
+    <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#" class="logo">
@@ -665,7 +829,7 @@
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><span>trade@topshelfbrands.co.uk</span></li>
+          <li><span>sales@topshelfbrands.co.uk</span></li>
           <li><span>+44 121 600 0000</span></li>
           <li><span>Birmingham, United Kingdom</span></li>
         </ul>
@@ -679,6 +843,7 @@
         <a href="#">Trade terms</a>
       </div>
     </div>
+  </div>
   </footer>
 
   <script>
