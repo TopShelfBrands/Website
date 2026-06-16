@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply for a Trade Account — TopShelf Brands</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Exact colours from the site */
+      --navy:       #0c1929;
+      --navy-light: #152236;
+      --gold:       #c9a142;
+      --gold-dim:   rgba(201,161,66,0.15);
+      --off-white:  #f5f4f1;
+      --white:      #ffffff;
+      --body-text:  #1f2937;
+      --muted:      #6b7280;
+      --border:     #e5e1da;
+      --input-bg:   #f9f8f6;
+
+      --radius: 2px;          /* site uses near-zero radius */
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--off-white);
+      color: var(--body-text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      background: var(--navy);
+      padding: 7px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.55);
+    }
+    .topbar-center { flex: 1; text-align: center; }
+    .topbar a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-right { display: flex; gap: 16px; }
+
+    /* ─── NAV ─── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+    .logo-badge {
+      width: 28px; height: 28px;
+      background: var(--navy);
+      color: var(--gold);
+      border-radius: 2px;
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-text {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+    .logo-text strong { font-weight: 700; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+    }
+    .nav-links li a {
+      display: block;
+      padding: 0 14px;
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0;
+      transition: color 0.15s;
+    }
+    .nav-links li a:hover { color: var(--navy); }
+    .nav-links li.active a { color: var(--navy); font-weight: 500; }
+    .nav-apply {
+      margin-left: 8px;
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 7px 16px !important;
+      border-radius: var(--radius);
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      white-space: nowrap;
+    }
+    .nav-apply:hover { background: var(--gold) !important; color: var(--navy) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--navy);
+      padding: 64px 40px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 50%;
+      background: radial-gradient(ellipse at 70% -10%, rgba(201,161,66,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(30px, 4.5vw, 50px);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--gold);
+      padding: 11px 40px;
+    }
+    .trust-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.025em;
+      white-space: nowrap;
+    }
+
+    /* ─── PAGE LAYOUT ─── */
+    .page-wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 52px 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 316px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ─── FORM SECTIONS ─── */
+    .form-section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+    }
+    .section-head {
+      background: var(--navy);
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-num {
+      width: 24px; height: 24px;
+      border: 1.5px solid rgba(201,161,66,0.7);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-head h2 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+    .section-body { padding: 28px; }
+
+    /* ─── FIELD SYSTEM ─── */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 22px;
+    }
+    .grid .span2 { grid-column: 1 / -1; }
+
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .field label .req { color: var(--gold); margin-left: 1px; }
+
+    .field input,
+    .field select,
+    .field textarea {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--body-text);
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 9px 12px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: #b8b0a5; }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px var(--gold-dim);
+      background: var(--white);
+    }
+    .field textarea { min-height: 90px; resize: vertical; }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7280'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 11px center;
+      padding-right: 30px;
+      cursor: pointer;
+    }
+    .field-hint {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ─── CHECKBOXES — fully custom ─── */
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .check-label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      cursor: pointer;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--input-bg);
+      font-size: 13.5px;
+      color: var(--body-text);
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .check-label:hover {
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    /* Hide the native checkbox, keep it accessible */
+    .check-label input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    /* Custom box */
+    .check-box {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid #c5beb5;
+      border-radius: 2px;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .check-box svg { display: none; }
+    /* Checked state — toggled via JS class */
+    .check-label.is-checked {
+      border-color: var(--navy);
+      background: var(--white);
+    }
+    .check-label.is-checked .check-box {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .check-label.is-checked .check-box svg { display: block; }
+
+    /* ─── CONSENT ROW ─── */
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .consent-row input[type="checkbox"] {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .consent-box-wrap {
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .consent-box {
+      width: 16px; height: 16px;
+      border: 1.5px solid #c5beb5;
+      border-radius: 2px;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .consent-box svg { display: none; }
+    .consent-box-wrap.is-checked .consent-box { background: var(--navy); border-color: var(--navy); }
+    .consent-box-wrap.is-checked .consent-box svg { display: block; }
+
+    /* ─── SUBMIT ─── */
+    .form-submit-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .form-submit-inner {
+      padding: 24px 28px 28px;
+    }
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      cursor: pointer;
+      margin-top: 18px;
+      transition: background 0.15s;
+    }
+    .btn-submit:hover { background: #1a3252; }
+    .btn-submit:active { transform: scale(0.99); }
+    .submit-note {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ─── SUCCESS ─── */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 48px 28px;
+    }
+    .success-state.show { display: block; }
+    .success-icon {
+      width: 52px; height: 52px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .success-state h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .success-state p { font-size: 14px; color: var(--muted); max-width: 340px; margin: 0 auto; }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .sb-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .sb-head {
+      background: var(--navy);
+      padding: 13px 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .sb-body { padding: 20px; }
+
+    .steps { display: flex; flex-direction: column; gap: 16px; }
+    .step { display: flex; gap: 11px; }
+    .step-num {
+      width: 22px; height: 22px;
+      background: var(--navy);
+      color: var(--gold);
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step h4 { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+    .step p { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-cell {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 10px;
+      text-align: center;
+    }
+    .stat-cell .n {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-cell .l { font-size: 11px; color: var(--muted); letter-spacing: 0.02em; }
+
+    .contact-list { display: flex; flex-direction: column; gap: 13px; }
+    .c-item { display: flex; align-items: flex-start; gap: 10px; }
+    .c-icon {
+      width: 28px; height: 28px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .c-item span.lbl { display: block; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1px; }
+    .c-item a, .c-item .val { font-size: 13px; color: var(--navy); text-decoration: none; font-weight: 500; }
+    .c-item a:hover { color: var(--gold); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      padding: 48px 40px 24px;
+      margin-top: 0;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 24px;
+    }
+    .footer-brand-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+      margin-top: 12px;
+      max-width: 240px;
+    }
+    .footer-col h5 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col li { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-col a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.15s; }
+    .footer-col a:hover { color: rgba(255,255,255,0.8); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; margin-left: 16px; }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ─── ERROR ─── */
+    .error-msg {
+      font-size: 11.5px;
+      color: #b91c1c;
+      margin-top: 3px;
+      display: none;
+    }
+    .field-error input,
+    .field-error select,
+    .field-error textarea { border-color: #dc2626 !important; }
+    .field-error .error-msg { display: block; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .page-wrap { grid-template-columns: 1fr; }
+      .sidebar { order: -1; display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .topbar-right { display: none; }
+      .nav-links { display: none; }
+      .hero { padding: 44px 20px 40px; }
+      .page-wrap { padding: 32px 20px 60px; }
+      .grid { grid-template-columns: 1fr; }
+      .grid .span2 { grid-column: auto; }
+      .check-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .sidebar { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span></span>
+  <span class="topbar-center">UK wholesale distributor — sourcing from 20+ countries worldwide</span>
+  <span class="topbar-right">
+    <a href="tel:+441216000000">+44 121 600 0000</a>
+    <a href="#">Trade login</a>
+  </span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="https://topshelfbrands.co.uk/">
+      <span class="logo-badge">T</span>
+      <span class="logo-text"><strong>TopShelf</strong> Brands</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://topshelfbrands.co.uk/#catalogue">Catalogue</a></li>
+      <li><a href="https://topshelfbrands.co.uk/#brands">Brand partners</a></li>
+      <li><a href="https://topshelfbrands.co.uk/#how">How it works</a></li>
+      <li><a href="https://topshelfbrands.co.uk/#why">Why TopShelf</a></li>
+      <li><a href="https://topshelfbrands.co.uk/#contact">Contact</a></li>
+      <li class="active"><a href="#" class="nav-apply">Apply for account →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Trade Account Application</div>
+  <h1>Open your account.<br><em>Start ordering today.</em></h1>
+  <p class="hero-sub">Verified UK and EU resellers only. Our trade team will review your application within one working day.</p>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5H11L8.25 6.75L9.25 10.5L6 8.5L2.75 10.5L3.75 6.75L1 4.5H4.5L6 1Z" fill="#0c1929"/></svg>
+      Verified onboarding
+    </div>
+    <div class="trust-item">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#0c1929" stroke-width="1.3"/><path d="M4 6l2 2 3-3" stroke="#0c1929" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Decision within 24hrs
+    </div>
+    <div class="trust-item">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="3.5" width="10" height="7.5" rx="1" stroke="#0c1929" stroke-width="1.3"/><path d="M3.5 3.5V3a2.5 2.5 0 015 0v.5" stroke="#0c1929" stroke-width="1.3"/></svg>
+      Secure application
+    </div>
+    <div class="trust-item">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 9l3-5 2.5 3.5 2-2 3.5 3.5" stroke="#0c1929" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      VAT invoices on all orders
+    </div>
+    <div class="trust-item">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#0c1929" stroke-width="1.3"/><path d="M6 3v3l2.5 1.5" stroke="#0c1929" stroke-width="1.3" stroke-linecap="round"/></svg>
+      48hr UK despatch
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="page-wrap">
+  <div id="formArea">
+
+    <!-- 1 · Business Details -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-num">1</div>
+        <h2>Business Details</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid">
+          <div class="field">
+            <label>Company name <span class="req">*</span></label>
+            <input type="text" name="company" placeholder="Your Ltd or trading name" />
+          </div>
+          <div class="field">
+            <label>Companies House number</label>
+            <input type="text" name="co_num" placeholder="e.g. 12345678" />
+          </div>
+          <div class="field">
+            <label>VAT number</label>
+            <input type="text" name="vat" placeholder="e.g. GB123456789" />
+          </div>
+          <div class="field">
+            <label>Business type <span class="req">*</span></label>
+            <select name="biz_type">
+              <option value="">Select…</option>
+              <option>Limited company</option>
+              <option>Sole trader</option>
+              <option>Partnership</option>
+              <option>LLP</option>
+              <option>EU registered business</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field span2">
+            <label>Registered business address <span class="req">*</span></label>
+            <input type="text" name="address" placeholder="Street, city, postcode" />
+          </div>
+          <div class="field">
+            <label>Country <span class="req">*</span></label>
+            <select name="country">
+              <option value="">Select…</option>
+              <option>United Kingdom</option>
+              <option>Ireland</option>
+              <option>France</option>
+              <option>Germany</option>
+              <option>Netherlands</option>
+              <option>Spain</option>
+              <option>Italy</option>
+              <option>Other EU</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Years trading <span class="req">*</span></label>
+            <select name="years">
+              <option value="">Select…</option>
+              <option>Less than 1 year</option>
+              <option>1–2 years</option>
+              <option>3–5 years</option>
+              <option>5–10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 · Primary Contact -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-num">2</div>
+        <h2>Primary Contact</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid">
+          <div class="field">
+            <label>First name <span class="req">*</span></label>
+            <input type="text" name="fname" placeholder="First name" />
+          </div>
+          <div class="field">
+            <label>Last name <span class="req">*</span></label>
+            <input type="text" name="lname" placeholder="Last name" />
+          </div>
+          <div class="field">
+            <label>Job title <span class="req">*</span></label>
+            <input type="text" name="title" placeholder="e.g. Director, Buyer" />
+          </div>
+          <div class="field">
+            <label>Phone <span class="req">*</span></label>
+            <input type="tel" name="phone" placeholder="+44 7700 000000" />
+          </div>
+          <div class="field span2">
+            <label>Business email <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="you@yourbusiness.co.uk" />
+            <span class="field-hint">Used for account setup and order notifications.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · Sales Channels & Categories -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-num">3</div>
+        <h2>Sales Channels &amp; Categories</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid">
+
+          <div class="field span2">
+            <label>Where do you sell? <span class="req">*</span></label>
+            <div class="check-grid" id="channelGroup">
+              <label class="check-label">
+                <input type="checkbox" name="channel" value="own_website" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Own website / e-commerce
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="channel" value="amazon" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Amazon
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="channel" value="ebay" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                eBay
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="channel" value="retail" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Physical retail store
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="channel" value="market" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Market / trade stall
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="channel" value="wholesale" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Wholesale resale
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="channel" value="etsy" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Etsy / Not on the High Street
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="channel" value="other" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Other
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Website URL</label>
+            <input type="url" name="website" placeholder="https://yourstore.co.uk" />
+          </div>
+          <div class="field">
+            <label>Approximate annual turnover</label>
+            <select name="turnover">
+              <option value="">Select…</option>
+              <option>Under £25,000</option>
+              <option>£25k – £100k</option>
+              <option>£100k – £500k</option>
+              <option>£500k – £2m</option>
+              <option>£2m+</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+
+          <div class="field span2">
+            <label>Which product categories interest you? <span class="req">*</span></label>
+            <div class="check-grid" id="categoryGroup">
+              <label class="check-label">
+                <input type="checkbox" name="category" value="fashion" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Fashion &amp; clothing
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="category" value="beauty" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Beauty &amp; cosmetics
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="category" value="home" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Kitchen &amp; home
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="category" value="accessories" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Bags &amp; accessories
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="category" value="fragrance" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Fragrance
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="category" value="toys" />
+                <span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Toys &amp; gifts
+              </label>
+            </div>
+          </div>
+
+          <div class="field span2">
+            <label>Anything else you'd like us to know?</label>
+            <textarea name="notes" placeholder="Tell us about your business, specific brands you're interested in, or any questions for our trade team…"></textarea>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 · Account & Payment -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-num">4</div>
+        <h2>Account &amp; Payment Preferences</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid">
+          <div class="field">
+            <label>Preferred payment method</label>
+            <select name="payment">
+              <option value="">Select…</option>
+              <option>Credit / debit card</option>
+              <option>BACS bank transfer</option>
+              <option>Credit terms (subject to approval)</option>
+              <option>PayPal Business</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Interested in credit terms?</label>
+            <select name="credit">
+              <option value="">Select…</option>
+              <option>Yes — please assess my account</option>
+              <option>No — prepayment preferred</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Estimated monthly order value</label>
+            <select name="order_val">
+              <option value="">Select…</option>
+              <option>Under £500</option>
+              <option>£500 – £2,000</option>
+              <option>£2,000 – £10,000</option>
+              <option>£10,000 – £50,000</option>
+              <option>£50,000+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Fulfilment preference</label>
+            <select name="fulfilment">
+              <option value="">Select…</option>
+              <option>Bulk delivery</option>
+              <option>Drop-ship to my customers</option>
+              <option>Both</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="form-submit-wrap">
+      <div class="form-submit-inner" id="submitInner">
+        <label class="consent-box-wrap" id="consentWrap">
+          <input type="checkbox" id="consentCheck" />
+          <span class="consent-box">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#c9a142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span style="font-size:13px;color:var(--muted);line-height:1.5;">I confirm the information is accurate and I am authorised to open a trade account on behalf of this business. I agree to TopShelf Brands' <a href="#" style="color:var(--navy);font-weight:600;">trade terms</a> and <a href="#" style="color:var(--navy);font-weight:600;">privacy policy</a>.</span>
+        </label>
+        <button type="button" class="btn-submit" id="submitBtn">Submit trade account application →</button>
+        <p class="submit-note">Our team reviews applications within 24 hours (Mon–Fri). You'll receive a confirmation email on submission.</p>
+      </div>
+      <div class="success-state" id="successState">
+        <div class="success-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11l5 5 9-9" stroke="#c9a142" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Application received.</h3>
+        <p>Thank you — our trade team will be in touch within one working day. Check your inbox for a confirmation email.</p>
+      </div>
+    </div>
+
+  </div><!-- /formArea -->
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sb-card">
+      <div class="sb-head">What happens next</div>
+      <div class="sb-body">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h4>Application review</h4>
+              <p>We verify your business details within 24 hours and confirm your account tier.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h4>Account setup</h4>
+              <p>You'll receive login credentials and access to wholesale pricing and live stock.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h4>Place your first order</h4>
+              <p>Browse 10k+ SKUs across 50+ brands. Your account manager is available from day one.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h4>Fast UK despatch</h4>
+              <p>Orders fulfilled from our Midlands hub — typically 48hrs from confirmation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-head">By the numbers</div>
+      <div class="sb-body">
+        <div class="stat-grid">
+          <div class="stat-cell"><div class="n">50+</div><div class="l">Brand partners</div></div>
+          <div class="stat-cell"><div class="n">10k+</div><div class="l">Active SKUs</div></div>
+          <div class="stat-cell"><div class="n">48hr</div><div class="l">UK despatch</div></div>
+          <div class="stat-cell"><div class="n">20+</div><div class="l">Source countries</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-head">Prefer to talk?</div>
+      <div class="sb-body">
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px;line-height:1.5;">Our trade team is available Monday to Friday, 9am – 5:30pm.</p>
+        <div class="contact-list">
+          <div class="c-item">
+            <div class="c-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="8" rx="1" stroke="#6b7280" stroke-width="1.2"/><path d="M1 3l5 4 5-4" stroke="#6b7280" stroke-width="1.2"/></svg>
+            </div>
+            <div><span class="lbl">Email</span><a href="mailto:sales@topshelfbrands.co.uk">sales@topshelfbrands.co.uk</a></div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2c0 0 .5 1.5 2 3s3 2 3 2l1-1-1.5-1.5-.5.5S5 4.5 4.5 4 4 3 4 3L5.5 1.5 4 0 2 2z" stroke="#6b7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+            </div>
+            <div><span class="lbl">Phone</span><a href="tel:+441216000000">+44 121 600 0000</a></div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#6b7280" stroke-width="1.2"/><path d="M6 1C3.8 1 2 2.8 2 5c0 3 4 6 4 6s4-3 4-6c0-2.2-1.8-4-4-4z" stroke="#6b7280" stroke-width="1.2"/></svg>
+            </div>
+            <div><span class="lbl">Location</span><span class="val">Birmingham, United Kingdom</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a class="logo" href="https://topshelfbrands.co.uk/" style="color:var(--white);">
+          <span class="logo-badge">T</span>
+          <span class="logo-text" style="color:var(--white);"><strong>TopShelf</strong> Brands</span>
+        </a>
+        <p class="footer-brand-desc">UK wholesale distributor supplying trade buyers with branded consumer goods across fashion, beauty, home and lifestyle.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Catalogue</h5>
+        <ul>
+          <li><a href="#">Fashion</a></li>
+          <li><a href="#">Beauty</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Fragrance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:sales@topshelfbrands.co.uk">sales@topshelfbrands.co.uk</a></li>
+          <li>+44 121 600 0000</li>
+          <li>Birmingham, United Kingdom</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TopShelf Brands Ltd. All rights reserved.</span>
+      <div>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Trade terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Custom checkbox toggle ──
+  document.querySelectorAll('.check-label').forEach(label => {
+    label.addEventListener('click', function(e) {
+      const cb = this.querySelector('input[type="checkbox"]');
+      cb.checked = !cb.checked;
+      this.classList.toggle('is-checked', cb.checked);
+    });
+  });
+
+  // ── Consent checkbox ──
+  const consentWrap = document.getElementById('consentWrap');
+  const consentCheck = document.getElementById('consentCheck');
+  consentWrap.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') return; // don't toggle when clicking links
+    consentCheck.checked = !consentCheck.checked;
+    consentWrap.classList.toggle('is-checked', consentCheck.checked);
+  });
+
+  // ── Submit ──
+  document.getElementById('submitBtn').addEventListener('click', function() {
+    let valid = true;
+    let firstErr = null;
+
+    // Required text/email/tel/select fields
+    const reqFields = [
+      { name: 'company', msg: 'Please enter your company name.' },
+      { name: 'biz_type', msg: 'Please select a business type.' },
+      { name: 'address', msg: 'Please enter your registered address.' },
+      { name: 'country', msg: 'Please select a country.' },
+      { name: 'years', msg: 'Please select years trading.' },
+      { name: 'fname', msg: 'Please enter your first name.' },
+      { name: 'lname', msg: 'Please enter your last name.' },
+      { name: 'title', msg: 'Please enter your job title.' },
+      { name: 'phone', msg: 'Please enter a phone number.' },
+      { name: 'email', msg: 'Please enter a valid email address.' },
+    ];
+
+    reqFields.forEach(f => {
+      const el = document.querySelector(`[name="${f.name}"]`);
+      const field = el.closest('.field');
+      let errEl = field.querySelector('.error-msg');
+      if (!errEl) {
+        errEl = document.createElement('span');
+        errEl.className = 'error-msg';
+        field.appendChild(errEl);
+      }
+      if (!el.value.trim()) {
+        field.classList.add('field-error');
+        errEl.textContent = f.msg;
+        errEl.style.display = 'block';
+        valid = false;
+        if (!firstErr) firstErr = el;
+      } else {
+        field.classList.remove('field-error');
+        errEl.style.display = 'none';
+      }
+    });
+
+    // Checkboxes
+    const channels = document.querySelectorAll('[name="channel"]:checked');
+    const categories = document.querySelectorAll('[name="category"]:checked');
+    if (!channels.length) {
+      valid = false;
+      if (!firstErr) firstErr = document.getElementById('channelGroup');
+      const hdr = document.querySelector('[for="channelGroup"]') || document.getElementById('channelGroup').previousElementSibling;
+    }
+    if (!categories.length) {
+      valid = false;
+      if (!firstErr) firstErr = document.getElementById('categoryGroup');
+    }
+
+    // Consent
+    if (!consentCheck.checked) {
+      valid = false;
+      consentWrap.style.outline = '2px solid #dc2626';
+      consentWrap.style.outlineOffset = '2px';
+      if (!firstErr) firstErr = consentWrap;
+    } else {
+      consentWrap.style.outline = '';
+    }
+
+    if (!valid) {
+      if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Success
+    document.getElementById('submitInner').style.display = 'none';
+    document.getElementById('successState').classList.add('show');
+    document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
+    document.getElementById('formArea').querySelector('.form-submit-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Clear error on input
+  document.querySelectorAll('input, select, textarea').forEach(el => {
+    el.addEventListener('input', () => {
+      const field = el.closest('.field');
+      if (field) {
+        field.classList.remove('field-error');
+        const err = field.querySelector('.error-msg');
+        if (err) err.style.display = 'none';
+      }
+    });
+    el.addEventListener('change', () => {
+      const field = el.closest('.field');
+      if (field) {
+        field.classList.remove('field-error');
+        const err = field.querySelector('.error-msg');
+        if (err) err.style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>
