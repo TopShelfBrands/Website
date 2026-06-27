@@ -4,29 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apply for a Trade Account — TopShelf Brands</title>
+  <link rel="icon" type="image/png" href="assets/Icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       /* Exact colours from the site */
-      --navy:       #0c1929;
-      --navy-light: #152236;
-      --gold:       #c9a142;
+      --navy:       #0d1b2e;
+      --navy-light: #122240;
+      --gold:       #c9a84c;
       --gold-dim:   rgba(201,161,66,0.15);
-      --off-white:  #f5f4f1;
+      --off-white:  #f5f0e8;
       --white:      #ffffff;
-      --body-text:  #1f2937;
+      --body-text:  #0d1b2e;
       --muted:      #6b7280;
       --border:     #e5e1da;
       --input-bg:   #f9f8f6;
 
       --radius: 2px;          /* site uses near-zero radius */
       --font-sans:  'Inter', system-ui, sans-serif;
-      --font-serif: 'Playfair Display', Georgia, serif;
-    }
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
 
     html { scroll-behavior: smooth; }
     body {
@@ -55,7 +55,7 @@
 
     /* ─── NAV ─── */
     nav {
-      background: var(--white);
+      background: var(--off-white);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
@@ -590,18 +590,34 @@
       .footer-top { grid-template-columns: 1fr; }
       .sidebar { display: flex; }
     }
+
+    /*-- topbar--*/
+  .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.topbar-inner {
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+}
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("KzaUxMqMRk86aHNrS");</script>
 </head>
 <body>
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <span></span>
-  <span class="topbar-center">UK wholesale distributor — sourcing from 20+ countries worldwide</span>
-  <span class="topbar-right">
-    <a href="tel:+441216000000">+44 121 600 0000</a>
-    <a href="#">Trade login</a>
-  </span>
+  <div class="container topbar-inner">
+    <span>UK wholesale distributor — sourcing from 20+ countries worldwide</span>
+    <div class="topbar-right">
+      <a href="tel:+441216000000">+44 121 600 0000</a>
+      <a href="#">Trade login</a>
+    </div>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -633,23 +649,23 @@
 <div class="trust-bar">
   <div class="trust-inner">
     <div class="trust-item">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5H11L8.25 6.75L9.25 10.5L6 8.5L2.75 10.5L3.75 6.75L1 4.5H4.5L6 1Z" fill="#0c1929"/></svg>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5H11L8.25 6.75L9.25 10.5L6 8.5L2.75 10.5L3.75 6.75L1 4.5H4.5L6 1Z" fill="#0d1b2e"/></svg>
       Verified onboarding
     </div>
     <div class="trust-item">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#0c1929" stroke-width="1.3"/><path d="M4 6l2 2 3-3" stroke="#0c1929" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#0d1b2e" stroke-width="1.3"/><path d="M4 6l2 2 3-3" stroke="#0d1b2e" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Decision within 24hrs
     </div>
     <div class="trust-item">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="3.5" width="10" height="7.5" rx="1" stroke="#0c1929" stroke-width="1.3"/><path d="M3.5 3.5V3a2.5 2.5 0 015 0v.5" stroke="#0c1929" stroke-width="1.3"/></svg>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="3.5" width="10" height="7.5" rx="1" stroke="#0d1b2e" stroke-width="1.3"/><path d="M3.5 3.5V3a2.5 2.5 0 015 0v.5" stroke="#0d1b2e" stroke-width="1.3"/></svg>
       Secure application
     </div>
     <div class="trust-item">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 9l3-5 2.5 3.5 2-2 3.5 3.5" stroke="#0c1929" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 9l3-5 2.5 3.5 2-2 3.5 3.5" stroke="#0d1b2e" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
       VAT invoices on all orders
     </div>
     <div class="trust-item">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#0c1929" stroke-width="1.3"/><path d="M6 3v3l2.5 1.5" stroke="#0c1929" stroke-width="1.3" stroke-linecap="round"/></svg>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#0d1b2e" stroke-width="1.3"/><path d="M6 3v3l2.5 1.5" stroke="#0d1b2e" stroke-width="1.3" stroke-linecap="round"/></svg>
       48hr UK despatch
     </div>
   </div>
@@ -1085,7 +1101,7 @@
   const consentWrap = document.getElementById('consentWrap');
   const consentCheck = document.getElementById('consentCheck');
   consentWrap.addEventListener('click', function(e) {
-    if (e.target.tagName === 'A') return; // don't toggle when clicking links
+    if (e.target.tagName === 'A') return;
     consentCheck.checked = !consentCheck.checked;
     consentWrap.classList.toggle('is-checked', consentCheck.checked);
   });
@@ -1095,18 +1111,17 @@
     let valid = true;
     let firstErr = null;
 
-    // Required text/email/tel/select fields
     const reqFields = [
-      { name: 'company', msg: 'Please enter your company name.' },
+      { name: 'company',  msg: 'Please enter your company name.' },
       { name: 'biz_type', msg: 'Please select a business type.' },
-      { name: 'address', msg: 'Please enter your registered address.' },
-      { name: 'country', msg: 'Please select a country.' },
-      { name: 'years', msg: 'Please select years trading.' },
-      { name: 'fname', msg: 'Please enter your first name.' },
-      { name: 'lname', msg: 'Please enter your last name.' },
-      { name: 'title', msg: 'Please enter your job title.' },
-      { name: 'phone', msg: 'Please enter a phone number.' },
-      { name: 'email', msg: 'Please enter a valid email address.' },
+      { name: 'address',  msg: 'Please enter your registered address.' },
+      { name: 'country',  msg: 'Please select a country.' },
+      { name: 'years',    msg: 'Please select years trading.' },
+      { name: 'fname',    msg: 'Please enter your first name.' },
+      { name: 'lname',    msg: 'Please enter your last name.' },
+      { name: 'title',    msg: 'Please enter your job title.' },
+      { name: 'phone',    msg: 'Please enter a phone number.' },
+      { name: 'email',    msg: 'Please enter a valid email address.' },
     ];
 
     reqFields.forEach(f => {
@@ -1130,20 +1145,17 @@
       }
     });
 
-    // Checkboxes
     const channels = document.querySelectorAll('[name="channel"]:checked');
     const categories = document.querySelectorAll('[name="category"]:checked');
     if (!channels.length) {
       valid = false;
       if (!firstErr) firstErr = document.getElementById('channelGroup');
-      const hdr = document.querySelector('[for="channelGroup"]') || document.getElementById('channelGroup').previousElementSibling;
     }
     if (!categories.length) {
       valid = false;
       if (!firstErr) firstErr = document.getElementById('categoryGroup');
     }
 
-    // Consent
     if (!consentCheck.checked) {
       valid = false;
       consentWrap.style.outline = '2px solid #dc2626';
@@ -1158,14 +1170,57 @@
       return;
     }
 
-    // Success
-    document.getElementById('submitInner').style.display = 'none';
-    document.getElementById('successState').classList.add('show');
-    document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
-    document.getElementById('formArea').querySelector('.form-submit-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // ── Gather form data ──
+    const get = name => document.querySelector(`[name="${name}"]`)?.value.trim() || '';
+    const getChecked = name => [...document.querySelectorAll(`[name="${name}"]:checked`)].map(el => el.value).join(', ');
+
+    const templateParams = {
+      company:    get('company'),
+      co_num:     get('co_num')     || 'Not provided',
+      vat:        get('vat')        || 'Not provided',
+      biz_type:   get('biz_type'),
+      address:    get('address'),
+      country:    get('country'),
+      years:      get('years'),
+      fname:      get('fname'),
+      lname:      get('lname'),
+      job_title:  get('title'),
+      phone:      get('phone'),
+      email:      get('email'),
+      channels:   getChecked('channel'),
+      website:    get('website')    || 'Not provided',
+      turnover:   get('turnover')   || 'Not provided',
+      categories: getChecked('category'),
+      notes:      get('notes')      || 'None',
+      payment:    get('payment')    || 'Not provided',
+      credit:     get('credit')     || 'Not provided',
+      order_val:  get('order_val')  || 'Not provided',
+      fulfilment: get('fulfilment') || 'Not provided',
+    };
+
+    // ── Disable button while sending ──
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    emailjs.send('service_1nnnuru', 'template_tdmxw16', templateParams)
+      .then(() => {
+        // Success
+        document.getElementById('submitInner').style.display = 'none';
+        document.getElementById('successState').classList.add('show');
+        document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
+        document.getElementById('formArea').querySelector('.form-submit-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      })
+      .catch(err => {
+        // Error
+        btn.textContent = 'Submit trade account application →';
+        btn.disabled = false;
+        alert('Sorry, something went wrong sending your application. Please email us directly at sales@topshelfbrands.co.uk or call +44 121 600 0000.');
+        console.error('EmailJS error:', err);
+      });
   });
 
-  // Clear error on input
+  // ── Clear errors on input ──
   document.querySelectorAll('input, select, textarea').forEach(el => {
     el.addEventListener('input', () => {
       const field = el.closest('.field');
